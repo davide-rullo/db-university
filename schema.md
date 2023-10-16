@@ -7,71 +7,72 @@ ogni Corso prevede più appelli d’Esame;
 ogni Studente è iscritto ad un solo Corso di Laurea;
 ogni Studente può iscriversi a più appelli di Esame;
 per ogni appello d’Esame a cui lo Studente ha partecipato, è necessario memorizzare il voto ottenuto, anche se non sufficiente. Pensiamo a quali entità (tabelle) creare per il nostro database e cerchiamo poi di stabilirne le relazioni. Infine, andiamo a definire le colonne e i tipi di dato di ogni tabella.
+Utilizzare https://www.diagrams.net/ per la creazione dello schema. Esportare quindi il diagramma in jpg e caricarlo nella repo.
 
 
 # Table Dipartimenti
-- Id
-- Nome
-- Indirizzo
-- Email
-- Telefono
-- Numero corsi di laurea
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Indirizzo | VARCHAR (50), NOT NULL
+- Email | VARCHAR(50), NOT NULL
+- Telefono | VARCHAR(20), NOT NULL
+- Numero corsi di laurea | SMALLINT, NOT NULL
 
 # Table Corsi di Laurea
-- Id
-- Nome
-- Numero corsi
-- Codice corso di laurea
-- Tipo
-- Requisiti
-- Note
-- Durata
-- Lingua
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Numero corsi | SMALLINT, NOT NULL
+- Codice corso di laurea | VARCHAR(20), NOT NULL
+- Tipo | VARCHAR(20), NOT NULL
+- Requisiti | VARCHAR(255), DEFAULT(Nessun Requisito Richiesto)
+- Note | TEXT, NULL
+- Durata | SMALLINT, NULL
+- Lingua | VARCHAR(50), DEFAULT(Italiano)
 
 # Table Corsi
-- Id
-- Nome
-- Durata
-- Esami
-- Insegnanti
-- Studenti
-- Note
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Durata | SMALLINT, NULL
+- Esami | SMALLINT, NULL
+- Insegnanti | VARCHAR(50), NOT NULL
+- Studenti | SMALLINT, NOT NULL
+- Note | TEXT, NULL
 
 
 
 # Table Insegnanti
-- Id
-- Nome
-- Cognome
-- Anno di nascita
-- Email
-- Note
-- Lingua
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Cognome | VARCHAR (50), NOT NULL
+- Anno di nascita | YEAR, NULL
+- Email | VARCHAR(50), NOT NULL
+- Note | TEXT, NULL
+- Lingua | VARCHAR(50), DEFAULT(Italiano)
 
 
 # Table Esami
-- Id
-- Nome
-- Tipo
-- Codice
-- Durata
-- obbligatorio
-- CFU
-- Data
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Tipo | VARCHAR(15), NOT NULL
+- Codice | VARCHAR(10), NOT NULL
+- Durata | SMALLINT, NULL
+- obbligatorio | BOOLEAN, DEFAULT(TRUE)
+- CFU | SMALLINT, NOT NULL
+- Data | DATE, NULL
 
 
 # Table Studenti
-- Id
-- Nome
-- Cognome
-- Matricola
-- Email
-- Anno di nascita
-- Media voti
-- Fascia reddituale
-- Occupazione
-- Voto diploma
-- Note
+- Id | PK, BIGINT, AUTO_INCREMENT, UNIQUE, NOT NULL
+- Nome | VARCHAR (50), NOT NULL
+- Cognome | VARCHAR (50), NOT NULL
+- Matricola | VARCHAR(10), NOT NULL
+- Email | VARCHAR(50), NOT NULL
+- Anno di nascita | YEAR, NOT NULL
+- Media voti | FLOAT(4,2)
+- Fascia reddituale | VARCHAR(20), NOT NULL
+- Occupazione | VARCHAR(20), NOT NULL
+- Voto diploma | SMALLINT, NOT NULL
+- Note | TEXT, NULL
 
 
 # Relationships 
