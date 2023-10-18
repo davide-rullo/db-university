@@ -25,10 +25,11 @@ SELECT `students`.`id`, `students`.`name`, `students`.`surname` FROM `students` 
 SELECT `degrees`.`id`, `degrees`.`name` FROM `degrees` JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` WHERE `degrees`.`level` = 'magistrale' AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 # 3 Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+SELECT `course_teacher`.`course_id`, `course_teacher`.`teacher_id`, `courses`.`name`, `teachers`.`name`, `teachers`.`surname` FROM `course_teacher` JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id` JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id` WHERE `course_teacher`.`teacher_id` = 44;
 
 
 # 4 Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
-
+SELECT `students`.`name` AS `student_name`, `students`.`surname`, `degrees`.`name` AS `degree_name`, `departments`.`name` AS `department_name` FROM `students` JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id` JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` ORDER BY `students`.`surname`, `student_name`;
 
 # 5 Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 
